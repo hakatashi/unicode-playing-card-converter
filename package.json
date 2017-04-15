@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "https://github.com/hakatashi/unicode-playing-card-converter.git",
   "author": "Koki Takahashi <hakatasiloving@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "tcomb": "^3.2.20"
+  }
 }
