@@ -1,5 +1,5 @@
 require! {
-  '../': converter
+  '../index.babel.js': converter
   chai: {expect}
 }
 
