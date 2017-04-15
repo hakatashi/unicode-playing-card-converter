@@ -26,7 +26,7 @@ Describe 'converter.fromCard' ->
     # U+1F0B7 🂷 PLAYING CARD SEVEN OF HEARTS
     expect converter.from-card suit: 'heart', rank: 7 .to.equal chr 0x1F0B7
     # U+1F0DC 🃜 PLAYING CARD KNIGHT OF CLUBS
-    expect converter.from-card suit: 'club', rank: 13 .to.equal chr 0x1F0DC
+    expect converter.from-card suit: 'club', rank: 12 .to.equal chr 0x1F0DC
 
 Describe 'converter.fromSpecials' ->
   It 'is typed' ->
