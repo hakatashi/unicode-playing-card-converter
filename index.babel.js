@@ -35,6 +35,10 @@ const fromSpecial = module.exports.fromSpecial = (card: {kind: string, variation
 			// U+1F0BF PLAYING CARD RED JOKER
 			return String.fromCodePoint(0x1F0BF);
 		}
+	} else if (card.kind === 'knight') {
+		if (Number.isInteger(card.variation) && 0 <= card.variation && card.variation <= 3) {
+			return String.fromCodePoint(0x1F0AC + 0x10 * card.variation);
+		}
 	} else if (card.kind === 'back') {
 		if (card.variation === 0) {
 			// U+1F0A0 PLAYING CARD BACK

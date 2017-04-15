@@ -76,6 +76,19 @@ Describe 'converter.fromSpecial' ->
     expect -> converter.from-special type: 'joker', variation: 0
     .to.throw TypeError
 
+  It 'interprets knights' ->
+    # U+1F0AC 🂬 PLAYING CARD KNIGHT OF SPADES
+    expect converter.from-special kind: 'knight', variation: 0 .to.equal chr 0x1F0AC
+    # U+1F0BC 🂼 PLAYING CARD KNIGHT OF HEARTS
+    expect converter.from-special kind: 'knight', variation: 1 .to.equal chr 0x1F0BC
+    # U+1F0CC 🃌 PLAYING CARD KNIGHT OF DIAMONDS
+    expect converter.from-special kind: 'knight', variation: 2 .to.equal chr 0x1F0CC
+    # U+1F0DC 🃜 PLAYING CARD KNIGHT OF CLUBS
+    expect converter.from-special kind: 'knight', variation: 3 .to.equal chr 0x1F0DC
+
+    expect -> converter.from-special kind: 'knight', variation: 4
+    .to.throw 'Unknown special'
+
   It 'interprets jokers' ->
     # U+1F0CF 🃏 PLAYING CARD BLACK JOKER
     expect converter.from-special kind: 'joker', variation: 0 .to.equal chr 0x1F0CF
