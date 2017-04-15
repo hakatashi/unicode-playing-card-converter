@@ -5,13 +5,12 @@
   "scripts": {
     "flow": "flow index.babel.js",
     "build": "babel index.babel.js -o index.js",
-    "test": "mochify \"test/*.ls\" --reporter spec --extension .ls --transform browserify-livescript --node"
+    "test": "mochify \"test/*.ls\" --reporter spec --transform browserify-livescript --transform babelify --node"
   },
   "repository": "https://github.com/hakatashi/unicode-playing-card-converter.git",
   "author": "Koki Takahashi <hakatasiloving@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "browserify-livescript": "^0.2.3",
     "tcomb": "^3.2.20"
   },
   "devDependencies": {
@@ -20,6 +19,8 @@
     "babel-plugin-tcomb": "^0.3.25",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify-livescript": "^0.2.3",
     "chai": "^3.5.0",
     "flow-bin": "^0.44.0",
     "mochify": "^3.1.1"
