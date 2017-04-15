@@ -93,3 +93,13 @@ const _abbrToCard = module.exports._abbrToCard = (abbr: string): ?{suit: string,
 
 	return {suit, rank};
 };
+
+const fromAbbr = module.exports.fromAbbr = (abbr: string): ?string => {
+	const card = _abbrToCard(abbr);
+
+	if (card === null) {
+		return null;
+	}
+
+	return fromCard(card);
+};

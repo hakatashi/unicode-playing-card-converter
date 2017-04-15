@@ -121,7 +121,7 @@ Describe 'converter.fromObject' ->
     .to.throw 'Type blah is invalid'
 
 Describe 'converter._abbrToCard' ->
-  It 'interprets standard style card abbrebiation' ->
+  It 'interprets standard style card abbreviation' ->
     expect converter._abbr-to-card 'Ah' .to.deep.equal suit: 'heart', rank: 1
     expect converter._abbr-to-card '2h' .to.deep.equal suit: 'heart', rank: 2
     expect converter._abbr-to-card '3h' .to.deep.equal suit: 'heart', rank: 3
@@ -140,7 +140,7 @@ Describe 'converter._abbrToCard' ->
     expect converter._abbr-to-card 'Ts' .to.deep.equal suit: 'spade', rank: 10
     expect converter._abbr-to-card 'Kc' .to.deep.equal suit: 'club', rank: 13
 
-  It 'returns null when invalid abbrebiation is given' ->
+  It 'returns null when invalid abbreviation is given' ->
     expect converter._abbr-to-card '0c' .to.be.null
     expect converter._abbr-to-card '100c' .to.be.null
     expect converter._abbr-to-card '1a' .to.be.null
@@ -148,3 +148,17 @@ Describe 'converter._abbrToCard' ->
     expect converter._abbr-to-card ' 2h' .to.be.null
     expect converter._abbr-to-card '2h ' .to.be.null
     expect converter._abbr-to-card '７ｈ' .to.be.null
+
+Describe 'converter.fromAbbr' ->
+  It 'is typed' ->
+    expect -> converter.from-abbr null
+    .to.throw TypeError
+
+    expect -> converter.from-abbr 100
+    .to.throw TypeError
+
+    expect -> converter.from-abbr {}
+    .to.throw TypeError
+
+  It 'converts abbreviated card description to unicode symbol' ->
+    expect converter.from-abbr 'Ah' .to.equal chr 0x1F0B1
