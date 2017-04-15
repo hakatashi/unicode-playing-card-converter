@@ -119,3 +119,32 @@ Describe 'converter.fromObject' ->
   It 'throws when unknown type is given' ->
     expect -> converter.from-object type: 'blah'
     .to.throw 'Type blah is invalid'
+
+Describe 'converter._abbrToCard' ->
+  It 'interprets standard style card abbrebiation' ->
+    expect converter._abbr-to-card 'Ah' .to.deep.equal suit: 'heart', rank: 1
+    expect converter._abbr-to-card '2h' .to.deep.equal suit: 'heart', rank: 2
+    expect converter._abbr-to-card '3h' .to.deep.equal suit: 'heart', rank: 3
+    expect converter._abbr-to-card '4h' .to.deep.equal suit: 'heart', rank: 4
+    expect converter._abbr-to-card '5h' .to.deep.equal suit: 'heart', rank: 5
+    expect converter._abbr-to-card '6h' .to.deep.equal suit: 'heart', rank: 6
+    expect converter._abbr-to-card '7h' .to.deep.equal suit: 'heart', rank: 7
+    expect converter._abbr-to-card '8h' .to.deep.equal suit: 'heart', rank: 8
+    expect converter._abbr-to-card '9h' .to.deep.equal suit: 'heart', rank: 9
+    expect converter._abbr-to-card '10h' .to.deep.equal suit: 'heart', rank: 10
+    expect converter._abbr-to-card 'Jh' .to.deep.equal suit: 'heart', rank: 11
+    expect converter._abbr-to-card 'Qh' .to.deep.equal suit: 'heart', rank: 12
+    expect converter._abbr-to-card 'Kh' .to.deep.equal suit: 'heart', rank: 13
+
+    expect converter._abbr-to-card '3d' .to.deep.equal suit: 'diamond', rank: 3
+    expect converter._abbr-to-card '10s' .to.deep.equal suit: 'spade', rank: 10
+    expect converter._abbr-to-card 'Kc' .to.deep.equal suit: 'club', rank: 13
+
+  It 'returns null when invalid abbrebiation is given' ->
+    expect converter._abbr-to-card '0c' .to.be.null
+    expect converter._abbr-to-card '100c' .to.be.null
+    expect converter._abbr-to-card '1a' .to.be.null
+    expect converter._abbr-to-card 'h2' .to.be.null
+    expect converter._abbr-to-card ' 2h' .to.be.null
+    expect converter._abbr-to-card '2h ' .to.be.null
+    expect converter._abbr-to-card '７ｈ' .to.be.null

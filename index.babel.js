@@ -1,6 +1,14 @@
 // @flow
 
+const assert = require('assert');
+
+const range = (start, end) => Array.from({length: (end - start + 1)}, (v, i) => i + start);
+
 const SUITS = ['spade', 'heart', 'diamond', 'club'];
+const ABBREBIATED_SUITS = ['s', 'h', 'd', 'c'];
+
+const ABBREBIATED_RANKS = ['A', ...range(2, 10).map(n => n.toString()), 'J', 'Q', 'K'];
+assert(ABBREBIATED_RANKS.length === 13);
 
 const fromCard = module.exports.fromCard = (card: {suit: string, rank: number}) => {
 	const suitIndex = SUITS.indexOf(card.suit);
@@ -57,4 +65,31 @@ const fromObject = module.exports.fromObject = (card: {type: string, suit?: stri
 	}
 
 	throw new Error(`Type ${card.type} is invalid`);
+};
+
+const _abbrToCard = module.exports._abbrToCard = (abbr: string): ?{suit: string, rank: number} => {
+	const chars = Array.from(abbr);
+
+	if (chars.length < 2) {
+		return null;
+	}
+
+	const lastCharacter = chars[chars.length - 1];
+	const leadingString = chars.slice(0, -1).join('');
+	const suitIndex = ABBREBIATED_SUITS.indexOf(lastCharacter);
+
+	if (suitIndex === -1) {
+		return null;
+	}
+
+	const suit = SUITS[suitIndex];
+	const rankIndex = ABBREBIATED_RANKS.indexOf(leadingString);
+
+	if (rankIndex === -1) {
+		return null;
+	}
+
+	const rank = rankIndex + 1;
+
+	return {suit, rank};
 };
