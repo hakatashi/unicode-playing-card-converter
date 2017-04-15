@@ -1,4 +1,4 @@
-require {
+require! {
   '../': converter
   chai: {expect}
 }
@@ -18,7 +18,7 @@ Describe 'converter.fromCard' ->
     # U+1F0DC 🃜 PLAYING CARD KNIGHT OF CLUBS
     expect converter.from-card suit: 'club', rank: 13 .to.equal chr 0x1F0DC
 
-Describe 'converter.fromSpecials'
+Describe 'converter.fromSpecials' ->
   It 'interprets jokers' ->
     # U+1F0CF 🃏 PLAYING CARD BLACK JOKER
     expect converter.from-specials type: 'joker', variation: 0 .to.equal chr 0x1F0CF
