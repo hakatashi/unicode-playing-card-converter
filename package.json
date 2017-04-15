@@ -5,7 +5,8 @@
   "scripts": {
     "flow": "flow index.babel.js",
     "build": "babel index.babel.js -o index.js",
-    "test": "mochify \"test/*.ls\" --reporter spec --transform browserify-livescript --transform babelify --node"
+    "test": "npm run flow && npm run mochify",
+    "mochify": "mochify \"test/*.ls\" --reporter spec --transform browserify-livescript --transform babelify --node"
   },
   "repository": "https://github.com/hakatashi/unicode-playing-card-converter.git",
   "author": "Koki Takahashi <hakatasiloving@gmail.com>",
