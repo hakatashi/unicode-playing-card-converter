@@ -2,7 +2,7 @@
 
 const SUITS = ['spade', 'heart', 'diamond', 'club'];
 
-module.exports.fromCard = (card: {suit: string, rank: number}) => {
+const fromCard = module.exports.fromCard = (card: {suit: string, rank: number}) => {
 	const suitIndex = SUITS.indexOf(card.suit);
 
 	if (suitIndex === -1) {
@@ -21,7 +21,7 @@ module.exports.fromCard = (card: {suit: string, rank: number}) => {
 	return String.fromCodePoint(codepoint);
 };
 
-module.exports.fromSpecials = (card: {kind: string, variation: number}) => {
+const fromSpecial = module.exports.fromSpecial = (card: {kind: string, variation: number}) => {
 	if (card.kind === 'joker') {
 		if (card.variation === 0) {
 			// U+1F0CF PLAYING CARD BLACK JOKER
@@ -41,4 +41,14 @@ module.exports.fromSpecials = (card: {kind: string, variation: number}) => {
 	}
 
 	throw new Error('Unknown specials');
+};
+
+const fromObject = module.exports.fromObject = (card: {type: string, suit?: string, rank?: number, kind?: string, variation?: number}) => {
+	if (card.type === 'card') {
+		return fromCard(card);
+	} else if (card.type === 'special') {
+		return fromSpecial(card);
+	}
+
+	throw new Error(`Type ${card.type} is invalid`);
 };
