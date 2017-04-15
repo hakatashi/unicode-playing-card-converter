@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "flow": "flow index.babel.js",
+    "build": "babel index.babel.js -o index.js",
     "test": "mochify \"test/*.ls\" --reporter spec --extension .ls --transform browserify-livescript --node"
   },
   "repository": "https://github.com/hakatashi/unicode-playing-card-converter.git",
