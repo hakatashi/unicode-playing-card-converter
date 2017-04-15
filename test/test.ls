@@ -131,13 +131,13 @@ Describe 'converter._abbrToCard' ->
     expect converter._abbr-to-card '7h' .to.deep.equal suit: 'heart', rank: 7
     expect converter._abbr-to-card '8h' .to.deep.equal suit: 'heart', rank: 8
     expect converter._abbr-to-card '9h' .to.deep.equal suit: 'heart', rank: 9
-    expect converter._abbr-to-card '10h' .to.deep.equal suit: 'heart', rank: 10
+    expect converter._abbr-to-card 'Th' .to.deep.equal suit: 'heart', rank: 10
     expect converter._abbr-to-card 'Jh' .to.deep.equal suit: 'heart', rank: 11
     expect converter._abbr-to-card 'Qh' .to.deep.equal suit: 'heart', rank: 12
     expect converter._abbr-to-card 'Kh' .to.deep.equal suit: 'heart', rank: 13
 
     expect converter._abbr-to-card '3d' .to.deep.equal suit: 'diamond', rank: 3
-    expect converter._abbr-to-card '10s' .to.deep.equal suit: 'spade', rank: 10
+    expect converter._abbr-to-card 'Ts' .to.deep.equal suit: 'spade', rank: 10
     expect converter._abbr-to-card 'Kc' .to.deep.equal suit: 'club', rank: 13
 
   It 'returns null when invalid abbrebiation is given' ->

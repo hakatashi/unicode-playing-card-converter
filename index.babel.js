@@ -7,7 +7,7 @@ const range = (start, end) => Array.from({length: (end - start + 1)}, (v, i) => 
 const SUITS = ['spade', 'heart', 'diamond', 'club'];
 const ABBREBIATED_SUITS = ['s', 'h', 'd', 'c'];
 
-const ABBREBIATED_RANKS = ['A', ...range(2, 10).map(n => n.toString()), 'J', 'Q', 'K'];
+const ABBREBIATED_RANKS = ['A', ...range(2, 9).map(n => n.toString()), 'T', 'J', 'Q', 'K'];
 assert(ABBREBIATED_RANKS.length === 13);
 
 const fromCard = module.exports.fromCard = (card: {suit: string, rank: number}) => {
