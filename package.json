@@ -2,10 +2,14 @@
   "name": "unicode-playing-card-converter",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "test": "mochify \"test/*.ls\" --reporter spec --extension .ls --transform browserify-livescript --node"
+  },
   "repository": "https://github.com/hakatashi/unicode-playing-card-converter.git",
   "author": "Koki Takahashi <hakatasiloving@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "browserify-livescript": "^0.2.3",
     "tcomb": "^3.2.20"
   },
   "devDependencies": {
