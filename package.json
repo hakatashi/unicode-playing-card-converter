@@ -2,10 +2,14 @@
   "name": "unicode-playing-card-converter",
   "version": "1.0.0",
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "flow": "flow index.babel.js",
     "build": "babel index.babel.js -o index.js",
     "test": "npm run flow && npm run mochify",
+    "prepublish": "in-publish && npm run build",
     "mochify": "mochify \"test/*.ls\" --reporter spec --transform browserify-livescript --transform babelify --node"
   },
   "repository": "https://github.com/hakatashi/unicode-playing-card-converter.git",
@@ -26,6 +30,7 @@
     "browserify-livescript": "^0.2.3",
     "chai": "^3.5.0",
     "flow-bin": "^0.44.0",
+    "in-publish": "^2.0.0",
     "mochify": "^3.1.1"
   }
 }
