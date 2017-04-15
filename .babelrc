@@ -5,5 +5,12 @@
 		"transform-es2015-modules-commonjs",
 		"transform-flow-strip-types",
 		"transform-runtime"
-	]
+	],
+	"env": {
+		"coverage": {
+			"plugins": [
+				"transform-flow-strip-types"
+			]
+		}
+	}
 }

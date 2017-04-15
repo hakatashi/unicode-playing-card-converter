@@ -28,6 +28,18 @@ Describe 'converter.fromCard' ->
     # U+1F0DC 🃜 PLAYING CARD KNIGHT OF CLUBS
     expect converter.from-card suit: 'club', rank: 12 .to.equal chr 0x1F0DC
 
+  It 'throws when unknown suit is given' ->
+    expect -> converter.from-card suit: 'blah', rank: 1
+    .to.throw 'Suit blah is invalid'
+
+  It 'throws when non-integer rank is given' ->
+    expect -> converter.from-card suit: 'heart', rank: 1.04
+    .to.throw 'Rank should be integer'
+
+  It 'throws when invalid rank is given' ->
+    expect -> converter.from-card suit: 'heart', rank: 100
+    .to.throw 'Rank 100 is invalid'
+
 Describe 'converter.fromSpecials' ->
   It 'is typed' ->
     expect -> converter.from-specials null
