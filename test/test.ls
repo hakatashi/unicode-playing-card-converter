@@ -59,6 +59,16 @@ Describe 'converter.fromSpecials' ->
     # U+1F0BF 🂿 PLAYING CARD RED JOKER
     expect converter.from-specials kind: 'joker', variation: 2 .to.equal chr 0x1F0BF
 
+    expect -> converter.from-specials kind: 'joker', variation: 3
+    .to.throw 'Unknown specials'
+
   It 'interprets back' ->
     # U+1F0A0 🂠 PLAYING CARD BACK
     expect converter.from-specials kind: 'back', variation: 0 .to.equal chr 0x1F0A0
+
+    expect -> converter.from-specials kind: 'back', variation: 1
+    .to.throw 'Unknown specials'
+
+  It 'throws when invalid kind is given' ->
+    expect -> converter.from-specials kind: 'blah', variation: 0
+    .to.throw 'Unknown specials'
