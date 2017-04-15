@@ -59,9 +59,9 @@ const fromSpecial = module.exports.fromSpecial = (card: {kind: string, variation
 
 const fromObject = module.exports.fromObject = (card: {type: string, suit?: string, rank?: number, kind?: string, variation?: number}) => {
 	if (card.type === 'card') {
-		return fromCard(card);
+		return fromCard({suit: String(card.suit), rank: Number(card.rank)});
 	} else if (card.type === 'special') {
-		return fromSpecial(card);
+		return fromSpecial({kind: String(card.kind), variation: Number(card.variation)});
 	}
 
 	throw new Error(`Type ${card.type} is invalid`);
