@@ -17,7 +17,9 @@ const fromCard = module.exports.fromCard = (card: {suit: string, rank: number}) 
 		throw new Error(`Rank ${card.rank} is invalid`);
 	}
 
-	const codepoint: number = 0x1F0A0 + suitIndex * 0x10 + card.rank;
+	const rankIndex = card.rank <= 11 ? card.rank : card.rank + 1;
+
+	const codepoint: number = 0x1F0A0 + suitIndex * 0x10 + rankIndex;
 	return String.fromCodePoint(codepoint);
 };
 

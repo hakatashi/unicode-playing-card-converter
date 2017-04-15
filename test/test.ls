@@ -50,8 +50,8 @@ Describe 'converter.fromCard' ->
     expect converter.from-card suit: 'diamond', rank: 3 .to.equal chr 0x1F0C3
     # U+1F0B7 🂷 PLAYING CARD SEVEN OF HEARTS
     expect converter.from-card suit: 'heart', rank: 7 .to.equal chr 0x1F0B7
-    # U+1F0DC 🃜 PLAYING CARD KNIGHT OF CLUBS
-    expect converter.from-card suit: 'club', rank: 13 .to.equal chr 0x1F0DC
+    # U+1F0DE 🃎 PLAYING CARD KING OF CLUBS
+    expect converter.from-card suit: 'club', rank: 13 .to.equal chr 0x1F0DE
 
   It 'throws when unknown suit is given' ->
     expect -> converter.from-card suit: 'blah', rank: 1
