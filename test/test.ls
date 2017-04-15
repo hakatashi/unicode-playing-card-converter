@@ -21,12 +21,37 @@ Describe 'converter.fromCard' ->
   It 'converts card object to unicode playing card character' ->
     # U+1F0A1 🂡 PLAYING CARD ACE OF SPADES
     expect converter.from-card suit: 'spade', rank: 1 .to.equal chr 0x1F0A1
+    # U+1F0A2 🂢 PLAYING CARD TWO OF SPADES
+    expect converter.from-card suit: 'spade', rank: 2 .to.equal chr 0x1F0A2
+    # U+1F0A3 🂣 PLAYING CARD THREE OF SPADES
+    expect converter.from-card suit: 'spade', rank: 3 .to.equal chr 0x1F0A3
+    # U+1F0A4 🂤 PLAYING CARD FOUR OF SPADES
+    expect converter.from-card suit: 'spade', rank: 4 .to.equal chr 0x1F0A4
+    # U+1F0A5 🂥 PLAYING CARD FIVE OF SPADES
+    expect converter.from-card suit: 'spade', rank: 5 .to.equal chr 0x1F0A5
+    # U+1F0A6 🂦 PLAYING CARD SIX OF SPADES
+    expect converter.from-card suit: 'spade', rank: 6 .to.equal chr 0x1F0A6
+    # U+1F0A7 🂧 PLAYING CARD SEVEN OF SPADES
+    expect converter.from-card suit: 'spade', rank: 7 .to.equal chr 0x1F0A7
+    # U+1F0A8 🂨 PLAYING CARD EIGHT OF SPADES
+    expect converter.from-card suit: 'spade', rank: 8 .to.equal chr 0x1F0A8
+    # U+1F0A9 🂩 PLAYING CARD NINE OF SPADES
+    expect converter.from-card suit: 'spade', rank: 9 .to.equal chr 0x1F0A9
+    # U+1F0AA 🂪 PLAYING CARD TEN OF SPADES
+    expect converter.from-card suit: 'spade', rank: 10 .to.equal chr 0x1F0AA
+    # U+1F0AC 🂬 PLAYING CARD KNIGHT OF SPADES
+    expect converter.from-card suit: 'spade', rank: 11 .to.equal chr 0x1F0AC
+    # U+1F0AD 🂭 PLAYING CARD QUEEN OF SPADES
+    expect converter.from-card suit: 'spade', rank: 12 .to.equal chr 0x1F0AD
+    # U+1F0AE 🂮 PLAYING CARD KING OF SPADES
+    expect converter.from-card suit: 'spade', rank: 13 .to.equal chr 0x1F0AE
+
     # U+1F0C3 🃃 PLAYING CARD THREE OF DIAMONDS
     expect converter.from-card suit: 'diamond', rank: 3 .to.equal chr 0x1F0C3
     # U+1F0B7 🂷 PLAYING CARD SEVEN OF HEARTS
     expect converter.from-card suit: 'heart', rank: 7 .to.equal chr 0x1F0B7
     # U+1F0DC 🃜 PLAYING CARD KNIGHT OF CLUBS
-    expect converter.from-card suit: 'club', rank: 12 .to.equal chr 0x1F0DC
+    expect converter.from-card suit: 'club', rank: 13 .to.equal chr 0x1F0DC
 
   It 'throws when unknown suit is given' ->
     expect -> converter.from-card suit: 'blah', rank: 1
