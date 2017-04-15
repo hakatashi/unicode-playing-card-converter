@@ -39,8 +39,8 @@ Describe 'converter.fromCard' ->
     expect converter.from-card suit: 'spade', rank: 9 .to.equal chr 0x1F0A9
     # U+1F0AA 🂪 PLAYING CARD TEN OF SPADES
     expect converter.from-card suit: 'spade', rank: 10 .to.equal chr 0x1F0AA
-    # U+1F0AC 🂬 PLAYING CARD KNIGHT OF SPADES
-    expect converter.from-card suit: 'spade', rank: 11 .to.equal chr 0x1F0AC
+    # U+1F0AB 🂫 PLAYING CARD JACK OF SPADES
+    expect converter.from-card suit: 'spade', rank: 11 .to.equal chr 0x1F0AB
     # U+1F0AD 🂭 PLAYING CARD QUEEN OF SPADES
     expect converter.from-card suit: 'spade', rank: 12 .to.equal chr 0x1F0AD
     # U+1F0AE 🂮 PLAYING CARD KING OF SPADES
