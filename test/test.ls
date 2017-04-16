@@ -7,6 +7,13 @@ chr = String.from-code-point
 
 {it: It, describe: Describe} = global
 
+Describe 'converter' ->
+  It 'can handle object notation of card' ->
+    expect converter type: 'card', suit: 'spade', rank: 1 .to.equal chr 0x1F0A1
+
+  It 'can handle abbreviated notation of card' ->
+    expect converter 'As' .to.equal chr 0x1F0A1
+
 Describe 'converter.fromCard' ->
   It 'is typed' ->
     expect -> converter.from-card null

@@ -5,10 +5,18 @@ const assert = require('assert');
 const range = (start, end) => Array.from({length: (end - start + 1)}, (v, i) => i + start);
 
 const SUITS = ['spade', 'heart', 'diamond', 'club'];
-const ABBREBIATED_SUITS = ['s', 'h', 'd', 'c'];
+const ABBREVIATED_SUITS = ['s', 'h', 'd', 'c'];
 
-const ABBREBIATED_RANKS = ['A', ...range(2, 9).map(n => n.toString()), 'T', 'J', 'Q', 'K'];
-assert(ABBREBIATED_RANKS.length === 13);
+const ABBREVIATED_RANKS = ['A', ...range(2, 9).map(n => n.toString()), 'T', 'J', 'Q', 'K'];
+assert(ABBREVIATED_RANKS.length === 13);
+
+module.exports = (card: {type: string, suit?: string, rank?: number, kind?: string, variation?: number} | string) => {
+	if (typeof card === 'object') {
+		return fromObject(card);
+	} else {
+		return fromAbbr(card);
+	}
+};
 
 const fromCard = module.exports.fromCard = (card: {suit: string, rank: number}) => {
 	const suitIndex = SUITS.indexOf(card.suit);
@@ -84,14 +92,14 @@ const _abbrToObject = module.exports._abbrToObject = (abbr: string): ?{type: str
 
 	const lastCharacter = chars[chars.length - 1];
 	const leadingString = chars.slice(0, -1).join('');
-	const suitIndex = ABBREBIATED_SUITS.indexOf(lastCharacter);
+	const suitIndex = ABBREVIATED_SUITS.indexOf(lastCharacter);
 
 	if (suitIndex === -1) {
 		return null;
 	}
 
 	const suit = SUITS[suitIndex];
-	const rankIndex = ABBREBIATED_RANKS.indexOf(leadingString);
+	const rankIndex = ABBREVIATED_RANKS.indexOf(leadingString);
 
 	if (rankIndex === -1) {
 		return null;
