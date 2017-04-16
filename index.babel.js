@@ -67,10 +67,18 @@ const fromObject = module.exports.fromObject = (card: {type: string, suit?: stri
 	throw new Error(`Type ${card.type} is invalid`);
 };
 
-const _abbrToCard = module.exports._abbrToCard = (abbr: string): ?{suit: string, rank: number} => {
+const _abbrToObject = module.exports._abbrToObject = (abbr: string): ?{type: string, suit?: string, rank?: number, kind?: string, variation?: number} => {
+	if (abbr === 'X') {
+		return {
+			type: 'special',
+			kind: 'joker',
+			variation: 0,
+		};
+	}
+
 	const chars = Array.from(abbr);
 
-	if (chars.length < 2) {
+	if (chars.length !== 2) {
 		return null;
 	}
 
@@ -91,15 +99,15 @@ const _abbrToCard = module.exports._abbrToCard = (abbr: string): ?{suit: string,
 
 	const rank = rankIndex + 1;
 
-	return {suit, rank};
+	return {type: 'card', suit, rank};
 };
 
 const fromAbbr = module.exports.fromAbbr = (abbr: string): ?string => {
-	const card = _abbrToCard(abbr);
+	const card = _abbrToObject(abbr);
 
-	if (card === null) {
+	if (card === null || card === undefined) {
 		return null;
 	}
 
-	return fromCard(card);
+	return fromObject(card);
 };
