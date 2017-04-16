@@ -33,6 +33,7 @@
     "chai": "^3.5.0",
     "flow-bin": "^0.44.0",
     "in-publish": "^2.0.0",
+    "mocha": "^3.2.0",
     "mochify": "^3.1.1",
     "readme-assert": "^5.0.5"
   }
