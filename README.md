@@ -16,7 +16,7 @@
 
 Convert playing card notation to an unicode character, and vice versa (coming soon).
 
-Supported: Node.js 6+
+Supported: Node.js 4+
 
 ```js
 const converter = require('unicode-playing-card-converter');
